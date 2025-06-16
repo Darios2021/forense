@@ -1,22 +1,12 @@
 <template>
   <v-app>
-    <v-main>
-      <v-container>
-        <FormularioSolicitud />
-        <SolicitudesTable />
-      </v-container>
-    </v-main>
+    <DefaultLayout v-if="$route.path !== '/login'">
+      <router-view />
+    </DefaultLayout>
+    <router-view v-else />
   </v-app>
 </template>
 
-<script>
-import SolicitudesTable from './components/SolicitudesTable.vue'
-import FormularioSolicitud from './components/FormularioSolicitud.vue'
-
-export default {
-  components: {
-    SolicitudesTable,
-    FormularioSolicitud
-  }
-}
+<script setup>
+import DefaultLayout from '@/components/layout/DefaultLayout.vue'
 </script>
